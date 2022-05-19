@@ -13,6 +13,7 @@
     "@types/node": "^17.0.29"
   },
   "scripts": {
-    "miau": "yarn ts-node ./src/app.ts"
+    "play-random": "yarn ts-node ./src/human-vs-random.ts",
+    "ai-tournament": "yarn ts-node ./src/tournament.ts"
   }
 }

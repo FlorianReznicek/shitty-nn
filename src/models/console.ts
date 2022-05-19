@@ -10,7 +10,7 @@ export class Console {
     static printBoard(board: Board) {
         let string = ``
         // HEADER
-        for (let c = 0; c < board.BOARD_COLUMN_COUNT; c++) {
+        for (let c = 1; c <= board.BOARD_COLUMN_COUNT; c++) {
             string += ` ${c} `
         }
         string += `\n`

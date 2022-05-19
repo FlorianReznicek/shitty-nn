@@ -1,7 +1,6 @@
 import {Board, Color} from "./board";
 import {Player} from "./abstract-player";
 import * as readline from "readline";
-import * as util from "util";
 import {Console} from "./console";
 
 const rl = readline.createInterface({
@@ -13,19 +12,19 @@ export class HumanPlayer extends Player{
     public async makeChoice(board: Board): Promise<number> {
         Console.printBoard(board)
 
-        const promptMove = await util.promisify(rl.question)
-
         let validInput = false
         while(!validInput) {
-            const input = await promptMove('Your turn, enter a column 1-7')
-            console.log(input)
+            const input: number = await new Promise((resolve, _reject) => {
+                rl.question('Your turn, enter a column 1-7 \n', str => resolve(parseInt(str)))
+            })
+            if(![1,2,3,4,5,6,7].includes(input) || !board.isColumnPlayable(input - 1)) {
+                console.log('Not a valid input, try again you stupid ass mf')
+                continue
+            }
 
             validInput = true
-            return 4
-            //const column = input - 1
-            //if([1,2,3,4,5,6,7].includes)
-            //const columnPlayable = board.isColumnPlayable(column)
+            return input - 1
         }
-        return 3
+        throw Error('no choice made')
     }
 }

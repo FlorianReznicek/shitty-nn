@@ -1,9 +1,9 @@
 import {Network} from "./network";
 
 export enum Color {
-    EMPTY ,
-    RED,
-    YELLOW,
+    EMPTY='EMPTY' ,
+    RED="RED",
+    YELLOW="YELLOW",
 }
 
 export interface Field {

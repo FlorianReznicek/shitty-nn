@@ -1,6 +1,4 @@
-import {Network} from "./network";
 import {Board, Color} from "./board";
-import {Console} from "./console";
 
 export enum NORMALIZED_COLOR {
     OPPONENT = 0,
@@ -9,20 +7,26 @@ export enum NORMALIZED_COLOR {
 }
 
 export abstract class Player {
-    public color: Color
-
-    constructor(color: Color) {
-        this.color = color
-    }
+    private color?: Color
 
     public abstract makeChoice(board: Board): Promise<number>
 
+    public getColor(): Color {
+        if (!this.color) throw Error('no color set')
+        return this.color
+    }
+
+    public setColor(color: Color) {
+        this.color = color
+    }
+
     public getNormalizedBoardState(board: Board): Array<NORMALIZED_COLOR> {
+        if (!this.color) throw Error('no color')
         return board.getState().map(field => {
             switch (field) {
                 case this.color:
                     return NORMALIZED_COLOR.MINE
-                case null:
+                case Color.EMPTY:
                     return NORMALIZED_COLOR.EMPTY
                 default:
                     return NORMALIZED_COLOR.OPPONENT
