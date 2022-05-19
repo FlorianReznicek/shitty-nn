@@ -1,0 +1,18 @@
+{
+  "name": "vowelquad",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ChubbyPrincess",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.29"
+  },
+  "scripts": {
+    "miau": "yarn ts-node ./src/app.ts"
+  }
+}
