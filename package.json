@@ -1,5 +1,5 @@
 {
-  "name": "vowelquad",
+  "name": "shitty-nn",
   "version": "1.0.0",
   "main": "index.js",
   "author": "ChubbyPrincess",
@@ -14,6 +14,8 @@
   },
   "scripts": {
     "play-random": "yarn ts-node ./src/human-vs-random.ts",
-    "ai-tournament": "yarn ts-node ./src/tournament.ts"
+    "ai-tournament": "yarn ts-node ./src/tournament.ts",
+    "play-version": "yarn ts-node ./src/human-vs-version.ts",
+    "evolve": "yarn ts-node ./src/evolve.ts"
   }
 }

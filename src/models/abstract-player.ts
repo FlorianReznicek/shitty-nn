@@ -6,10 +6,22 @@ export enum NORMALIZED_COLOR {
     MINE = 1,
 }
 
+let ID = 1
+
 export abstract class Player {
     private color?: Color
+    public ID: number
+
+    constructor() {
+        this.ID = ++ID
+    }
+
+    toString() {
+        return `Player ${this.ID}`
+    }
 
     public abstract makeChoice(board: Board): Promise<number>
+    public abstract saveToFile(): Promise<string>
 
     public getColor(): Color {
         if (!this.color) throw Error('no color set')
@@ -33,4 +45,6 @@ export abstract class Player {
             }
         })
     }
+
+
 }

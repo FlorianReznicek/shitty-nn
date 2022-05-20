@@ -7,8 +7,11 @@ const BLACK = '\x1b[30m'
 const RESET = "\x1b[0m"
 
 export class Console {
-    static printBoard(board: Board) {
-        let string = ``
+    static printBoard(board: Board, drawOver: boolean = true, additionalLines: number = 0) {
+        if (drawOver) process.stdout.moveCursor(0,-(10+additionalLines))
+        process.stdout.clearLine(0)
+
+        let string = `\n`
         // HEADER
         for (let c = 1; c <= board.BOARD_COLUMN_COUNT; c++) {
             string += ` ${c} `
@@ -27,6 +30,7 @@ export class Console {
         }
 
         string += RESET
+        string += `\n`
         console.log(string)
     }
 
