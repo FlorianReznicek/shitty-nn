@@ -1,7 +1,5 @@
 import {Player} from "./abstract-player";
-import { Console } from "./console";
 import {GameController, Result} from "./game-controller";
-import {asyncSleep} from "./helper";
 
 type TournamentResult = Array<{
     player: Player
@@ -37,16 +35,18 @@ export class TournamentController {
 
                 const game = new GameController(player1, player2)
 
-                const result = await game.play()
+                const [result, moves] = await game.play()
 
                 switch (result) {
                     case Result.PLAYER1_WIN:
                         this.score[i] += 1
+                        this.score[j] += moves/100
                         this.wins[i] += 1
                         this.losses[j] += 1
                         break
                     case Result.PLAYER2_WIN:
                         this.score[j] += 1
+                        this.score[i] += moves/100
                         this.wins[j] += 1
                         this.losses[i] += 1
                         break

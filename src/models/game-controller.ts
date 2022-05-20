@@ -22,7 +22,7 @@ export class GameController {
         this.exhibitionGame = exhibitionGame
     }
 
-    public async play(): Promise<Result> {
+    public async play(): Promise<[Result, number]> {
         this.players[0].setColor(Color.YELLOW)
         this.players[1].setColor(Color.RED)
 
@@ -52,12 +52,12 @@ export class GameController {
                     console.log(this.players[this.onTurn].toString() + " has won!")
                     await asyncSleep(1000)
                 }
-                return this.onTurn ? Result.PLAYER2_WIN : Result.PLAYER1_WIN
+                return [this.onTurn ? Result.PLAYER2_WIN : Result.PLAYER1_WIN, i]
             }
 
             this.toggleTurn()
         }
-        return Result.DRAW
+        return [ Result.DRAW, this.board.BOARD_FIELD_COUNT ]
     }
 
     private toggleTurn() {

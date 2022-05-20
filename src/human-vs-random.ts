@@ -4,7 +4,7 @@ import {HumanPlayer} from "./models/human-player";
 import {AIPlayer} from "./models/ai-player";
 
 async function main() {
-    const gc = new GameController(new HumanPlayer(), new AIPlayer(), true)
+    const gc = new GameController(new HumanPlayer(), new AIPlayer("RANDOM", undefined, true), true)
     const result = await gc.play()
     console.log(result)
 }

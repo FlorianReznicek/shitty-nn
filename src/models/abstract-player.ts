@@ -21,7 +21,7 @@ export abstract class Player {
     }
 
     public abstract makeChoice(board: Board): Promise<number>
-    public abstract saveToFile(): Promise<string>
+    public abstract saveToFile(dirname?: string): Promise<string>
 
     public getColor(): Color {
         if (!this.color) throw Error('no color set')
